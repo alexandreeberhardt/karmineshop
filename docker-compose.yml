@@ -7,5 +7,11 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3000"
+      TRUST_PROXY: "1"
     ports:
       - "127.0.0.1:${HOST_PORT:-8116}:3000"
+    volumes:
+      - karmineshop-data:/app/var
+
+volumes:
+  karmineshop-data:
