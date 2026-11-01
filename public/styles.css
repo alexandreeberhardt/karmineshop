@@ -38,66 +38,94 @@ a:focus-visible, button:focus-visible, select:focus-visible {
 
 /* En-tete */
 
-.hero {
-  max-width: 48rem;
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 82rem;
   margin: 0 auto;
-  padding: 4rem 1.5rem 2.5rem;
-  text-align: center;
+  padding: 1.25rem 1.5rem;
 }
 
-.tag {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(54, 183, 255, 0.5);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--kc-cyan);
-}
-
-h1 {
+.brand {
   font-family: var(--display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(2.75rem, 10vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  text-shadow: 0 0 40px rgba(30, 91, 255, 0.55);
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--kc-white);
 }
 
-h1 span {
+.brand span {
   background: linear-gradient(90deg, var(--kc-blue), var(--kc-cyan));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.bar {
-  width: 6rem;
-  height: 6px;
-  margin: 1.5rem auto 0;
-  background: linear-gradient(90deg, var(--kc-blue), var(--kc-cyan));
-  transform: skewX(-20deg);
+.tag {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(54, 183, 255, 0.5);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--kc-cyan);
 }
 
-.lead {
-  margin-top: 1.5rem;
-  font-size: clamp(1.15rem, 3vw, 1.5rem);
-  font-weight: 800;
+.shop-link {
+  margin-left: auto;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--kc-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--kc-white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.shop-link:hover {
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--kc-blue), var(--kc-cyan));
+}
+
+.hero {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 900;
   font-style: italic;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .intro {
-  margin-top: 0.75rem;
-  font-size: 1.05rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.75;
+  opacity: 0.7;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Barre d'outils */
@@ -349,4 +377,22 @@ footer strong { color: var(--kc-cyan); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Petits ecrans */
+
+@media (max-width: 480px) {
+  .site-header { gap: 0.5rem; }
+  .site-header, .hero, main { padding-inline: 1rem; }
+  .brand { font-size: 1.1rem; }
+  .tag { padding: 0.15rem 0.45rem; font-size: 0.65rem; letter-spacing: 0.06em; }
+  .shop-link { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
+  .shop-extra {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
