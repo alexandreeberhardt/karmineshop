@@ -6,3 +6,4 @@ deploy.env
 deploy.env.example
 .git
 .gitignore
+var
