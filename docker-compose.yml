@@ -1,0 +1,11 @@
+services:
+  karmineshop:
+    build: .
+    image: karmineshop:latest
+    container_name: karmineshop
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    ports:
+      - "127.0.0.1:${HOST_PORT:-8116}:3000"
