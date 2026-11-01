@@ -4,19 +4,76 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b1e">
-  <title>Karmine Shop — site non officiel</title>
+  <meta name="description" content="La vitrine des créations de la communauté Karmine Corp : concepts de maillots, bracelets, accessoires. Site non officiel.">
+  <meta name="referrer" content="no-referrer">
+  <title>Karmine Shop · la vitrine de la commu (non officiel)</title>
   <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
 </head>
 <body>
   <div class="bg" aria-hidden="true"></div>
-  <main>
+
+  <header class="hero">
     <p class="tag">Site non officiel</p>
     <h1>Karmine <span>Shop</span></h1>
     <div class="bar" aria-hidden="true"></div>
-    <p class="lead">Le site arrive bientôt.</p>
-    <a class="cta" href="https://www.karminecorp.fr/" target="_blank" rel="noopener">Boutique officielle Karmine Corp →</a>
-    <p>Ce projet est un site communautaire <strong>non officiel</strong>. Il n'est ni affilié à la Karmine Corp, ni approuvé par elle.</p>
-    <p class="note">Si la Karmine Corp souhaite récupérer ce nom de domaine, je le lui céderai gratuitement, sur simple demande.</p>
+    <p class="lead">La vitrine des créations de la commu</p>
+    <p class="intro">Concepts de maillots, bracelets, accessoires&nbsp;: tout ce que les fans de la KC ont imaginé et posté sur X.
+      Pas besoin de compte, un like par création.</p>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filtrer par catégorie" id="filters"></div>
+      <label class="sort">
+        <span>Trier</span>
+        <select id="sort">
+          <option value="likes">Les plus likées</option>
+          <option value="recent">Les plus récentes</option>
+          <option value="random">Au hasard</option>
+        </select>
+      </label>
+    </div>
+
+    <p class="status" id="status" role="status">Chargement des créations…</p>
+    <ul class="grid" id="grid"></ul>
   </main>
+
+  <dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+    <button class="viewer-close" type="button" aria-label="Fermer" data-close>✕</button>
+    <div class="viewer-media" id="viewer-media"></div>
+    <div class="viewer-info">
+      <h2 id="viewer-title"></h2>
+      <p class="viewer-author" id="viewer-author"></p>
+      <p class="viewer-text" id="viewer-text"></p>
+      <div class="viewer-actions" id="viewer-actions"></div>
+    </div>
+  </dialog>
+
+  <footer>
+    <p>Chaque création appartient à son auteur ou autrice&nbsp;: les visuels sont affichés depuis X avec un lien vers le post original.
+      Tu as fait une création et tu veux qu'elle soit ajoutée, modifiée ou retirée&nbsp;? Mentionne le site sur X.</p>
+    <p>Ce projet est un site communautaire <strong>non officiel</strong>. Il n'est ni affilié à la Karmine Corp, ni approuvé par elle.
+      <a href="https://www.karminecorp.fr/" target="_blank" rel="noopener">Boutique officielle Karmine Corp →</a></p>
+    <p class="note">Si la Karmine Corp souhaite récupérer ce nom de domaine, je le lui céderai gratuitement, sur simple demande.</p>
+  </footer>
+
+  <template id="card-template">
+    <li class="card">
+      <button class="card-media" type="button">
+        <img alt="" loading="lazy" referrerpolicy="no-referrer">
+        <span class="card-count" hidden></span>
+      </button>
+      <div class="card-body">
+        <p class="card-category"></p>
+        <h3 class="card-title"></h3>
+        <a class="card-author" target="_blank" rel="noopener"></a>
+      </div>
+      <button class="like" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.2 0 3.7 1.2 5.2 3 1.5-1.8 3-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="like-count">0</span>
+      </button>
+    </li>
+  </template>
 </body>
 </html>
